@@ -1,4 +1,3 @@
-# RGB-D based Autonomous Mobile Robot
-
+# MonocularSLAM based Autonomous navigation with Depth camera
 PROJECT COMING SOON!!!
 
