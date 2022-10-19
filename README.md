@@ -1,3 +1,3 @@
-# MonocularSLAM based Autonomous navigation with Depth camera
+# Monocular SLAM based Autonomous navigation with Depth camera
 PROJECT COMING SOON!!!
 
