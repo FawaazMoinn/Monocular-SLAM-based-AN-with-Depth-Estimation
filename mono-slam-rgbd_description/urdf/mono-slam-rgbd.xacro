@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+<robot name="mono-slam-rgbd" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find mono-slam-rgbd_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find mono-slam-rgbd_description)/urdf/mono-slam-rgbd.trans" />
+<xacro:include filename="$(find mono-slam-rgbd_description)/urdf/mono-slam-rgbd.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.004582683546374872 -1.8744785054698612e-17 0.09692937397401277" rpy="0 0 0"/>
+    <mass value="4.114485734847727"/>
+    <inertia ixx="0.022066" iyy="0.031476" izz="0.027401" ixy="0.0" iyz="-0.0" ixz="0.003076"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="-7.786475390158727e-18 -0.011000047912054611 0.0" rpy="0 0 0"/>
+    <mass value="0.27157026455058925"/>
+    <inertia ixx="0.000298" iyy="0.000574" izz="0.000298" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.097191 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.097191 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-7.786475390158727e-18 0.011000047912054597 0.0" rpy="0 0 0"/>
+    <mass value="0.27157026455058925"/>
+    <inertia ixx="0.000298" iyy="0.000574" izz="0.000298" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.097191 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.097191 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_1">
+  <inertial>
+    <origin xyz="-0.0018423769067477946 -1.7789767878018978e-14 0.0124999999999999" rpy="0 0 0"/>
+    <mass value="0.01834486316442506"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="2e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.064996 -0.0 -0.39" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.064996 -0.0 -0.39" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mono-slam-rgbd_description/meshes/camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev7" type="continuous">
+  <origin xyz="0.0 -0.097191 0.065" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Rev8" type="continuous">
+  <origin xyz="0.0 0.097191 0.065" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid9" type="fixed">
+  <origin xyz="-0.064996 0.0 0.39" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_1"/>
+</joint>
+
+</robot>
